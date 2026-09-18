@@ -10,8 +10,8 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onViewWork }) => {
   return (
     <section id="home" className="relative w-full overflow-hidden">
-      {/* Full-width 21:9 background image */}
-      <div className="relative w-full aspect-[21/9] bg-[#EAE3D6]">
+      {/* Full-width background image — full viewport on mobile, 21:9 on desktop */}
+      <div className="relative w-full h-dvh sm:h-auto sm:aspect-[21/9] bg-[#EAE3D6]">
         <img
           src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2400&q=85"
           alt="Contemporary interior living space by Designer Mad Mumbai"
@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onViewWork }) => {
 
         {/* Content overlaid on image */}
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-8 sm:px-12">
+          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <div className="max-w-[520px]">
               {/* Tagline eyebrow */}
               <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.24em] text-[#9E7A3E] uppercase font-sans mb-3 block">
@@ -65,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onViewWork }) => {
               </div>
 
               {/* Metrics — below buttons, left-aligned */}
-              <div className="flex items-start gap-8">
+              <div className="flex items-start gap-5 sm:gap-8">
                 {/* Metric 1 */}
                 <div className="flex flex-col">
                   <span className="text-[28px] sm:text-[32px] font-bold font-editorial text-[#1A1815] tracking-tight leading-none">
@@ -109,8 +109,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onViewWork }) => {
           </div>
         </div>
 
-        {/* Quote on image — right side, upper area */}
-        <div className="absolute top-[15%] right-10 sm:right-16 max-w-[200px] sm:max-w-[240px]">
+        {/* Quote on image — right side, upper area (hidden on mobile) */}
+        <div className="hidden sm:block absolute top-[15%] right-10 sm:right-16 max-w-[200px] sm:max-w-[240px]">
           <p className="text-[15px] sm:text-[17px] italic text-[#2A2620] font-editorial leading-snug">
             "Good design<br />makes everyday<br />life better."
           </p>
