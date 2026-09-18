@@ -48,7 +48,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, presele
 
   const handleWhatsAppQuote = () => {
     const text = encodeURIComponent(
-      `Hi Designer Mad (Ayazb Chougule),\nI would like an interior design quote:\n• Name: ${formData.name || 'Interested Client'}\n• Phone: ${formData.phone || 'N/A'}\n• Project Type: ${formData.spaceType}\n• Budget Range: ${formData.budget}\n• Location: ${formData.location}\n• Details: ${formData.message || 'Looking for site visit & design consultation.'}`
+      `Hi Designer Mad (Ayyub Chogle),\nI would like an interior design quote:\n• Name: ${formData.name || 'Interested Client'}\n• Phone: ${formData.phone || 'N/A'}\n• Project Type: ${formData.spaceType}\n• Budget Range: ${formData.budget}\n• Location: ${formData.location}\n• Details: ${formData.message || 'Looking for site visit & design consultation.'}`
     );
     window.open(`https://wa.me/919137389866?text=${text}`, '_blank');
   };
@@ -86,7 +86,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, presele
                 Thank You, {formData.name || 'there'}!
               </h4>
               <p className="text-[15px] text-[#5C554E] max-w-md mx-auto mb-6">
-                Your consultation request has been received. Ayazb Chougule and the Designer Mad team will review your requirements and reach out within 24 hours.
+                Your consultation request has been received. Ayyub Chogle and the Designer Mad team will review your requirements and reach out within 24 hours.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <button

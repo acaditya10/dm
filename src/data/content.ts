@@ -3,7 +3,7 @@ import { Project, ServiceItem, Testimonial, ProcessStep } from '../types';
 export const BUSINESS_INFO = {
   name: 'DESIGNER MAD',
   tagline: 'INTERIOR DESIGNER & DECORATOR',
-  founder: 'Ayazb Chougule',
+  founder: 'Ayyub Chogle',
   founderRole: 'FOUNDER & PRINCIPAL DESIGNER',
   experience: '8+ Years in practice',
   projectsCompleted: '100+',
@@ -260,6 +260,6 @@ export const PROCESS_STEPS: ProcessStep[] = [
     number: '04',
     title: 'Handover',
     description: "You move into a space you'll love.",
-    details: 'Deep professional cleaning, final quality check, full walkthrough with Ayazb Chougule, and post-handover warranty support.',
+    details: 'Deep professional cleaning, final quality check, full walkthrough with Ayyub Chogle, and post-handover warranty support.',
   },
 ];

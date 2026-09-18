@@ -53,7 +53,7 @@ export const AboutSection: React.FC = () => {
 
               <div className="sm:col-span-4 sm:pl-6 sm:border-l sm:border-[#E5DDD0] flex flex-row sm:flex-col justify-between sm:justify-center gap-3">
                 <span className="text-2xl sm:text-3xl lg:text-4xl text-[#1A1815] font-signature leading-tight -rotate-2 select-none">
-                  Ayazb Chougule
+                  Ayyub Chogle
                 </span>
                 <div className="flex flex-col sm:mt-1">
                   <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-[#8C8479] uppercase">
