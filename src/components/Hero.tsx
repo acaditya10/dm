@@ -23,8 +23,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onViewWork }) => {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(248,245,239,0.95) 0%, rgba(248,245,239,0.85) 30%, rgba(248,245,239,0.5) 55%, rgba(248,245,239,0) 70%)' }} />
 
         {/* Content overlaid on image */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="absolute inset-0 flex items-end sm:items-center">
+          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-12 sm:pb-0">
             <div className="max-w-[520px]">
               {/* Tagline eyebrow */}
               <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.24em] text-[#9E7A3E] uppercase font-sans mb-3 block">

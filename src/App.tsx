@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ServicesSection } from './components/ServicesSection';
@@ -22,6 +22,15 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [reviewsModalOpen, setReviewsModalOpen] = useState(false);
+  const [showFloating, setShowFloating] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowFloating(window.scrollY > window.innerHeight * 0.8);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const handleOpenQuote = (serviceName?: string) => {
     setSelectedServiceForQuote(serviceName);
@@ -86,8 +95,9 @@ export default function App() {
       {/* Footer matching reference */}
       <Footer onOpenQuote={() => handleOpenQuote()} />
 
-      {/* Floating Quick Action for Mumbai Clients (WhatsApp & Call) */}
-      <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
+      {/* Floating Quick Action for Mumbai Clients (WhatsApp & Call) — hidden on hero */}
+      {showFloating && (
+        <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
         <a
           id="floating-whatsapp-btn"
           href={BUSINESS_INFO.whatsappLink}
@@ -109,6 +119,7 @@ export default function App() {
           <Phone className="w-4 h-4 text-[#B89358]" />
         </a>
       </div>
+      )}
 
       {/* Interactive Modals */}
       <QuoteModal
