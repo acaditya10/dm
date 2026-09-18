@@ -18,23 +18,22 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
     return PROJECTS.filter((p) => p.category === activeCategory);
   }, [activeCategory]);
 
-  // For the 'All' view, we reproduce the exact 1-large-left + 2x2-right layout from the reference
   const primaryProject = filteredProjects[0];
   const secondaryProjects = filteredProjects.slice(1, 5);
 
   return (
-    <section id="projects" className="py-16 sm:py-20 border-t border-[#E5DDD0]">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+    <section id="projects" className="py-10 sm:py-16 lg:py-20 border-t border-[#E5DDD0]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         {/* Eyebrow */}
-        <div className="mb-3">
+        <div className="mb-2 sm:mb-3">
           <span className="text-[11px] sm:text-[12px] font-bold tracking-[0.24em] text-[#9E7A3E] uppercase font-sans">
             Our Projects
           </span>
         </div>
 
         {/* Heading + View All action */}
-        <div className="flex items-end justify-between gap-4 mb-8">
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-semibold text-[#1A1815] tracking-tight font-editorial">
+        <div className="flex items-end justify-between gap-4 mb-5 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl lg:text-[44px] font-semibold text-[#1A1815] tracking-tight font-editorial">
             Spaces We've Transformed
           </h2>
           <button
@@ -47,8 +46,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
           </button>
         </div>
 
-        {/* Filter Pill Buttons matching reference */}
-        <div className="flex flex-wrap items-center gap-2.5 mb-10">
+        {/* Filter Pill Buttons — horizontally scrollable on mobile */}
+        <div className="flex overflow-x-auto gap-2 sm:gap-2.5 mb-6 sm:mb-10 pb-1 -mx-5 px-5 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-hide">
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
             return (
@@ -56,7 +55,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                 key={cat}
                 id={`filter-btn-${cat.toLowerCase()}`}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded text-[13.5px] font-medium transition-all duration-200 cursor-pointer ${
+                className={`shrink-0 px-4 sm:px-5 py-1.5 sm:py-2 rounded text-[13px] sm:text-[13.5px] font-medium transition-all duration-200 cursor-pointer ${
                   isActive
                     ? 'bg-[#1A1815] text-white shadow-sm'
                     : 'bg-[#EFECE5] text-[#554E46] hover:bg-[#E5DFD4] hover:text-[#1A1815]'
@@ -68,15 +67,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
           })}
         </div>
 
-        {/* Projects Grid: Exactly matching the reference layout */}
+        {/* Projects Grid */}
         {activeCategory === 'All' && primaryProject ? (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            {/* Left Column: 1 Large Featured Card (Modern Living Room) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
+            {/* Left Column: 1 Large Featured Card */}
             <div className="lg:col-span-6 flex">
               <div
                 id={`project-card-${primaryProject.id}`}
                 onClick={() => onSelectProject(primaryProject)}
-                className="group relative w-full h-[380px] sm:h-[480px] lg:h-full min-h-[460px] rounded overflow-hidden shadow-md cursor-pointer bg-[#221F1C]"
+                className="group relative w-full h-[260px] sm:h-[380px] lg:h-full min-h-[300px] sm:min-h-[460px] rounded overflow-hidden shadow-md cursor-pointer bg-[#221F1C]"
               >
                 <img
                   src={primaryProject.image}
@@ -84,21 +83,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-
-                {/* Dark gradient overlay for typography clarity */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
-
-                {/* Quick view indicator on hover */}
                 <div className="absolute top-4 right-4 w-9 h-9 rounded bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                   <Eye className="w-4 h-4 text-white" />
                 </div>
-
-                {/* Card Info matching reference */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <h3 className="text-2xl sm:text-3xl font-semibold text-white font-editorial tracking-tight mb-1">
+                <div className="absolute bottom-4 sm:bottom-6 left-5 sm:left-6 right-5 sm:right-6">
+                  <h3 className="text-lg sm:text-2xl lg:text-3xl font-semibold text-white font-editorial tracking-tight mb-1">
                     {primaryProject.title}
                   </h3>
-                  <p className="text-[13px] font-medium tracking-wide text-[#DFD7CB] font-sans">
+                  <p className="text-[12px] sm:text-[13px] font-medium tracking-wide text-[#DFD7CB] font-sans">
                     {primaryProject.category}
                   </p>
                 </div>
@@ -106,13 +99,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
             </div>
 
             {/* Right Column: 2x2 Grid of 4 Cards */}
-            <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="lg:col-span-6 grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
               {secondaryProjects.map((project) => (
                 <div
                   key={project.id}
                   id={`project-card-${project.id}`}
                   onClick={() => onSelectProject(project)}
-                  className="group relative h-[220px] sm:h-[240px] rounded overflow-hidden shadow-md cursor-pointer bg-[#221F1C]"
+                  className="group relative h-[160px] sm:h-[200px] lg:h-[240px] rounded overflow-hidden shadow-md cursor-pointer bg-[#221F1C]"
                 >
                   <img
                     src={project.image}
@@ -120,21 +113,15 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     loading="lazy"
                   />
-
-                  {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
-
-                  {/* Quick view icon */}
-                  <div className="absolute top-3.5 right-3.5 w-8 h-8 rounded bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Eye className="w-3.5 h-3.5 text-white" />
+                  <div className="absolute top-3 right-3 w-7 h-7 sm:w-8 sm:h-8 rounded bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Eye className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
                   </div>
-
-                  {/* Card Info */}
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <h3 className="text-lg sm:text-[19px] font-semibold text-white font-editorial tracking-tight mb-0.5">
+                  <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5">
+                    <h3 className="text-sm sm:text-base lg:text-[19px] font-semibold text-white font-editorial tracking-tight mb-0.5 line-clamp-1">
                       {project.title}
                     </h3>
-                    <p className="text-[12px] font-medium tracking-wide text-[#DFD7CB] font-sans">
+                    <p className="text-[10px] sm:text-[12px] font-medium tracking-wide text-[#DFD7CB] font-sans">
                       {project.category}
                     </p>
                   </div>
@@ -144,13 +131,13 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
           </div>
         ) : (
           /* Filtered Category Grid */
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredProjects.map((project) => (
               <div
                 key={project.id}
                 id={`project-card-${project.id}`}
                 onClick={() => onSelectProject(project)}
-                className="group relative h-[280px] sm:h-[300px] rounded overflow-hidden shadow-md cursor-pointer bg-[#221F1C]"
+                className="group relative h-[220px] sm:h-[280px] lg:h-[300px] rounded overflow-hidden shadow-md cursor-pointer bg-[#221F1C]"
               >
                 <img
                   src={project.image}
@@ -158,18 +145,16 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300 group-hover:opacity-95" />
-
-                <div className="absolute bottom-5 left-5 right-5">
-                  <h3 className="text-xl font-semibold text-white font-editorial tracking-tight mb-0.5">
+                <div className="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5">
+                  <h3 className="text-base sm:text-xl font-semibold text-white font-editorial tracking-tight mb-0.5">
                     {project.title}
                   </h3>
                   <div className="flex items-center justify-between">
-                    <p className="text-[12px] font-medium tracking-wide text-[#DFD7CB] font-sans">
+                    <p className="text-[11px] sm:text-[12px] font-medium tracking-wide text-[#DFD7CB] font-sans">
                       {project.category} • {project.location}
                     </p>
-                    <span className="text-xs text-[#B89358] font-medium underline">
+                    <span className="text-[11px] sm:text-xs text-[#B89358] font-medium underline">
                       View details
                     </span>
                   </div>
@@ -180,7 +165,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProjec
         )}
 
         {/* Mobile View All Projects Link */}
-        <div className="sm:hidden mt-8 text-center">
+        <div className="sm:hidden mt-6 text-center">
           <button
             onClick={onViewAll}
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A1815] underline"
